@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Painel local de acompanhamento das prioridades proféticas da Estaca Jaboatão dos Guararapes.">
+  <title>Painel da Estaca | Jaboatão dos Guararapes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <a class="brand" href="#visao-geral" aria-label="Painel da Estaca">
+        <span class="brand-mark" aria-hidden="true">JG</span>
+        <span><strong>Painel da Estaca</strong><small>Jaboatão dos Guararapes</small></span>
+      </a>
+
+      <nav class="nav-list">
+        <a class="nav-item active" href="#visao-geral"><span>⌂</span> Visão geral</a>
+        <a class="nav-item" href="#indicadores"><span>◫</span> Indicadores</a>
+        <a class="nav-item" href="#unidades"><span>◎</span> Unidades</a>
+        <a class="nav-item" href="#relatorios"><span>▤</span> Relatórios mensais</a>
+      </nav>
+
+      <div class="sidebar-note">
+        <p>Visão de Boas Novas</p>
+        <strong>100 anos · 2028</strong>
+        <span>Viver, cuidar, convidar e unir.</span>
+      </div>
+
+      <div class="sidebar-footer">
+        <span class="status-dot"></span>
+        <div><strong>Dados locais</strong><small>Salvos neste navegador</small></div>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+        <div>
+          <p class="eyebrow">Prioridades Proféticas · Brasil</p>
+          <h1>Acompanhamento de metas</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="year-select">Ano <select aria-label="Ano"><option>2026</option></select></label>
+          <button class="button secondary" id="exportButton">Exportar dados</button>
+          <button class="button primary" id="newReportButton">+ Novo relatório</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="hero" id="visao-geral">
+          <div class="hero-copy">
+            <p class="eyebrow light">Estaca Jaboatão dos Guararapes</p>
+            <h2>Onde estamos agora — e onde concentrar nossos esforços.</h2>
+            <p>Leitura consolidada dos relatórios mensais, com progresso anual, tendências e oportunidades por unidade.</p>
+            <div class="hero-meta">
+              <span><b id="latestMonthLabel">Agosto de 2026</b> último relatório</span>
+              <span><b id="reportsCount">3</b> meses acompanhados</span>
+              <span><b>6</b> alas</span>
+            </div>
+          </div>
+          <div class="hero-score">
+            <div class="score-ring" id="scoreRing"><span><strong id="scoreValue">—</strong><small>progresso médio</small></span></div>
+            <p id="scoreCaption">Calculando indicadores disponíveis…</p>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="diagnostico-title">
+          <div class="section-heading compact">
+            <div><p class="eyebrow">Leitura executiva</p><h2 id="diagnostico-title">O que merece atenção agora</h2></div>
+            <span class="updated" id="updatedLabel">Base: Ago 2026</span>
+          </div>
+          <div class="insights-grid" id="insightsGrid"></div>
+        </section>
+
+        <section class="section" id="indicadores" aria-labelledby="indicadores-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">Progresso anual</p><h2 id="indicadores-title">Indicadores prioritários</h2></div>
+            <div class="legend"><span><i class="good"></i>No caminho</span><span><i class="watch"></i>Atenção</span><span><i class="risk"></i>Prioridade</span></div>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </section>
+
+        <section class="section trend-section" aria-labelledby="tendencias-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">Evolução mensal</p><h2 id="tendencias-title">Tendência dos indicadores</h2></div>
+            <label class="metric-select">Indicador <select id="trendMetric"></select></label>
+          </div>
+          <div class="chart-card">
+            <div class="chart-summary">
+              <div><span>Valor atual</span><strong id="trendCurrent">—</strong></div>
+              <div><span>Meta</span><strong id="trendTarget">—</strong></div>
+              <div><span>Variação mensal</span><strong id="trendDelta">—</strong></div>
+            </div>
+            <div id="trendChart" class="chart" role="img" aria-label="Gráfico de evolução mensal"></div>
+          </div>
+        </section>
+
+        <section class="section" id="unidades" aria-labelledby="unidades-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">Detalhe por ala</p><h2 id="unidades-title">Oportunidades por unidade</h2></div>
+            <span class="updated">Dados do relatório de Ago 2026</span>
+          </div>
+          <div class="unit-layout">
+            <div class="table-card">
+              <div class="table-scroll">
+                <table>
+                  <thead><tr><th>Unidade</th><th>Reunião sacramental</th><th>Membros participantes</th><th>Jejuando</th><th>Batismos</th><th>Recomendação c/ investidura</th></tr></thead>
+                  <tbody id="unitTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <aside class="focus-card">
+              <p class="eyebrow light">Foco sugerido</p>
+              <h3 id="focusTitle">—</h3>
+              <p id="focusText">—</p>
+              <div id="focusList"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" id="relatorios" aria-labelledby="relatorios-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">Histórico e alimentação</p><h2 id="relatorios-title">Relatórios mensais</h2></div>
+            <div class="inline-actions">
+              <label class="button secondary file-button">Importar JSON<input type="file" id="importInput" accept="application/json"></label>
+              <button class="button secondary" id="resetButton">Restaurar dados publicados</button>
+            </div>
+          </div>
+          <div class="reports-card">
+            <div class="reports-head"><span>Mês</span><span>Indicadores informados</span><span>Qualidade dos dados</span><span></span></div>
+            <div id="reportsList"></div>
+          </div>
+          <p class="privacy-note">Os números oficiais vêm da versão publicada no GitHub. Alterações feitas aqui ficam como rascunho somente neste navegador; use “Exportar dados” para encaminhá-las ao responsável pela publicação.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="reportDialog">
+    <form method="dialog" id="reportForm">
+      <div class="dialog-header">
+        <div><p class="eyebrow">Alimentar o painel</p><h2>Novo relatório mensal</h2></div>
+        <button class="icon-button" id="closeDialogButton" type="button" aria-label="Fechar">×</button>
+      </div>
+      <div class="dialog-body">
+        <div class="form-row">
+          <label>Mês<select id="reportMonth" required></select></label>
+          <label>Ano<input id="reportYear" type="number" value="2026" min="2026" max="2035" required></label>
+        </div>
+        <p class="form-help">Digite os totais da estaca. Deixe em branco quando o dado não estiver disponível — o painel não o tratará como zero.</p>
+        <div class="metric-form-grid" id="metricFormGrid"></div>
+      </div>
+      <div class="dialog-footer">
+        <button class="button secondary" id="cancelDialogButton" type="button">Cancelar</button>
+        <button class="button primary" id="saveReportButton" value="default">Salvar relatório</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="unitDialog" class="unit-dialog">
+    <div class="dialog-header unit-dialog-header">
+      <div><p class="eyebrow">Foco sugerido da unidade</p><h2 id="unitDialogTitle">—</h2></div>
+      <button class="icon-button" id="closeUnitDialogButton" type="button" aria-label="Fechar">×</button>
+    </div>
+    <div class="dialog-body">
+      <div class="unit-summary">
+        <div class="unit-score" id="unitScore">—</div>
+        <div><strong id="unitSummaryTitle">—</strong><p id="unitSummaryText">—</p></div>
+      </div>
+      <div class="unit-focus-list" id="unitFocusList"></div>
+      <p class="form-help unit-help" id="unitHelp"></p>
+    </div>
+    <div class="dialog-footer">
+      <button class="button primary" id="doneUnitDialogButton" type="button">Concluído</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
