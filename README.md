@@ -39,7 +39,7 @@ O workflow `.github/workflows/deploy-pages.yml` publica a pasta `dist` a cada pu
 3. Em **Build and deployment → Source**, escolha **GitHub Actions**.
 4. Aguarde o workflow **Publicar painel no GitHub Pages** terminar.
 
-O endereço será `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
+Site publicado: <https://jacktrevor.github.io/stake-goals-dashboard/>
 
 ## Fontes iniciais
 
